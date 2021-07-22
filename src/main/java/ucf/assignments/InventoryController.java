@@ -172,6 +172,7 @@ public class InventoryController {
             searchObservableList.add(func.prettyString(searchList.get(i)));
         }
         inventoryList.setItems(searchObservableList);
+
     }
 
     public void sortAll(ActionEvent actionEvent) {
