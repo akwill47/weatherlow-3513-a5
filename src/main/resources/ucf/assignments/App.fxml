@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<SplitPane dividerPositions="0.1891891891891892" orientation="VERTICAL" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ucf.assignments.InventoryController">
+    <items>
+        <AnchorPane prefHeight="49.0" prefWidth="608.0">
+            <children>
+                <MenuButton layoutX="40.0" layoutY="14.0" mnemonicParsing="false" text="Edit items">
+                    <items>
+                        <MenuItem mnemonicParsing="false" onAction="#removeItem" text="Remove item" />
+                        <MenuItem mnemonicParsing="false" onAction="#editName" text="Change name" />
+                        <MenuItem mnemonicParsing="false" onAction="#editSerial" text="Change serial" />
+                        <MenuItem mnemonicParsing="false" onAction="#editValue" text="Change value" />
+                        <MenuItem mnemonicParsing="false" onAction="#clearList" text="Clear List" />
+                    </items>
+                </MenuButton>
+                <MenuButton layoutX="147.0" layoutY="14.0" mnemonicParsing="false" text="Display items">
+                    <items>
+                  <MenuItem mnemonicParsing="false" onAction="#sortAll" text="Display all" />
+                        <MenuItem mnemonicParsing="false" onAction="#sortValue" text="Sort by value" />
+                        <MenuItem mnemonicParsing="false" onAction="#sortSerial" text="Sort by serial" />
+                        <MenuItem mnemonicParsing="false" onAction="#sortName" text="Sort by name" />
+                    </items>
+                </MenuButton>
+                <MenuButton layoutX="264.0" layoutY="14.0" mnemonicParsing="false" text="List storage">
+                    <items>
+                        <MenuItem mnemonicParsing="false" onAction="#saveCurrent" text="Save current list" />
+                        <MenuItem mnemonicParsing="false" onAction="#loadOne" text="Load one list" />
+                    </items>
+                </MenuButton>
+            <MenuButton layoutX="372.0" layoutY="14.0" mnemonicParsing="false" text="Search">
+              <items>
+                <MenuItem mnemonicParsing="false" onAction="#searchSerial" text="Search serial" />
+                <MenuItem mnemonicParsing="false" onAction="#searchName" text="Search name" />
+              </items>
+            </MenuButton>
+            </children>
+        </AnchorPane>
+        <AnchorPane prefHeight="509.0" prefWidth="608.0">
+            <children>
+                <Button fx:id="addList" layoutX="14.0" layoutY="29.0" mnemonicParsing="false" onAction="#AddListItem" text="Add item" />
+                <TextField fx:id="addName" layoutX="225.0" layoutY="29.0" prefHeight="25.0" prefWidth="265.0" promptText="Enter name" />
+                <Separator layoutX="89.0" orientation="VERTICAL" prefHeight="142.0" prefWidth="6.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="89.0" AnchorPane.topAnchor="0.0" />
+                <Separator layoutX="206.0" orientation="VERTICAL" prefHeight="145.0" prefWidth="6.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="206.0" AnchorPane.topAnchor="0.0" />
+                <TextField fx:id="addValue" layoutX="509.0" layoutY="29.0" prefHeight="25.0" prefWidth="79.0" promptText="Enter Value" text="\$" />
+                <ListView fx:id="itemList" layoutX="-1.0" layoutY="65.0" prefHeight="479.0" prefWidth="610.0" />
+            <TextField fx:id="addSerial" layoutX="95.0" layoutY="29.0" prefHeight="25.0" prefWidth="103.0" promptText="Enter serial" />
+            </children>
+        </AnchorPane>
+    </items>
+</SplitPane>
