@@ -5,14 +5,14 @@ import java.util.HashMap;
 
 public class InventoryFunctions {
     public String prettyString(HashMap<String,String> item){
-        return "Serial Number: " + item.get("serial") + "\tName: " + item.get("name") + "\t\t\t\t\tValue: " + item.get("value");
+        return "Serial Number: " + item.get("serial") + "\t\t\tName: " + item.get("name") + "\t\t\t\t\tValue: " + item.get("value");
     }
     public String addItem(ArrayList<HashMap<String,String>> list,String name,String serial,String value){
         //cannot duplicate serial number
         HashMap<String,String> newItem = new HashMap<>();
         newItem.put("serial",serial);
         newItem.put("name",name);
-        newItem.put("value",value);
+        newItem.put("value","$"+value);
         list.add(newItem);
         return "Item successfully added";
     }

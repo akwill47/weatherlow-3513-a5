@@ -2,12 +2,17 @@ package ucf.assignments;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
-import java.time.LocalDate;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -122,9 +127,22 @@ public class InventoryController {
     }
 
 
-    public void searchSerial(ActionEvent actionEvent) {
+    public void searchSerial(ActionEvent actionEvent) throws IOException {
+
+        Stage popupSave = new Stage();
+        popupSave.initModality(Modality.APPLICATION_MODAL);
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("PopUp.fxml"));
+        Parent root = loader.load();
+
+        PopUpController controller = loader.getController();
+
+        Scene scene = new Scene(root);
+        popupSave.setScene(scene);
+        popupSave.showAndWait();
+
         ArrayList<HashMap<String,String>> searchList = new ArrayList<>();
-        String searchKey = null;
+        String searchKey = popupSave.getTitle();
         func.searchBySerialNumber(searchList,workList,searchKey);
         ObservableList<String> searchObservableList = FXCollections.observableArrayList();
         for(int i=0;i<searchList.size();i++){
@@ -133,9 +151,21 @@ public class InventoryController {
         inventoryList.setItems(searchObservableList);
     }
 
-    public void searchName(ActionEvent actionEvent) {
+    public void searchName(ActionEvent actionEvent) throws IOException{
+        Stage popupSave = new Stage();
+        popupSave.initModality(Modality.APPLICATION_MODAL);
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("PopUp.fxml"));
+        Parent root = loader.load();
+
+        PopUpController controller = loader.getController();
+
+        Scene scene = new Scene(root);
+        popupSave.setScene(scene);
+        popupSave.showAndWait();
+
         ArrayList<HashMap<String,String>> searchList = new ArrayList<>();
-        String searchKey = null;
+        String searchKey = popupSave.getTitle();
         func.searchByName(searchList,workList,searchKey);
         ObservableList<String> searchObservableList = FXCollections.observableArrayList();
         for(int i=0;i<searchList.size();i++){
