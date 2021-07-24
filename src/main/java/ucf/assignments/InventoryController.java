@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.collections.FXCollections;
@@ -30,7 +31,15 @@ public class InventoryController {
 
     ArrayList<HashMap<String,String>>workList = new ArrayList<>();//main working list
     ObservableList<String> observList = FXCollections.observableArrayList();
+    public void infoBox(String infoMessage, String titleBar, String headerMessage)
+    {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(titleBar);
+        alert.setHeaderText(headerMessage);
+        alert.setContentText(infoMessage);
+        alert.showAndWait();
 
+    }
     private void refresh(){
         //resets the textfields
         addValue.setText(null);
@@ -39,8 +48,10 @@ public class InventoryController {
     }
 
     public void AddListItem(ActionEvent actionEvent) {
-        func.addItem(workList, addName.getText(),addSerial.getText(),addValue.getText());
-        observList.add(func.prettyString(workList.get(workList.size()-1)));
+        String test =func.addItem(workList, addName.getText(),addSerial.getText(),addValue.getText());
+        if(test.equals("Item successfully added"))
+            observList.add(func.prettyString(workList.get(workList.size()-1)));
+
         inventoryList.setItems(observList);
 
         refresh();

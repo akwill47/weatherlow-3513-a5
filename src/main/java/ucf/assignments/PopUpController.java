@@ -14,15 +14,15 @@ public class PopUpController {
     @FXML
     public TextField addSearch;
     @FXML
-    String test;
+    String returnText;
     @FXML
     private void closeBtnClick() throws IOException {
 
         //stores textfield input as a string
-        test = addSearch.getText();
+        returnText = addSearch.getText();
 
         Stage stage = (Stage)addSearch.getScene().getWindow();
-        stage.setTitle(test);
+        stage.setTitle(returnText);
         stage.close();
     }
 
