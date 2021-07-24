@@ -1,27 +1,66 @@
 @startuml
 'https://plantuml.com/class-diagram
 
-abstract class AbstractList
-abstract AbstractCollection
-interface List
-interface Collection
-
-List <|-- AbstractList
-Collection <|-- AbstractCollection
-
-Collection <|- List
-AbstractCollection <|- AbstractList
-AbstractList <|-- ArrayList
-
-class ArrayList {
-Object[] elementData
-size()
+class App{
+main()
+start()
 }
 
-enum TimeUnit {
-DAYS
-HOURS
-MINUTES
+
+class InventoryController{
+inventoryList: Listview
+workList: ArrayList
+observList: ObservableList
+addName: TextField
+addSerial: TextField
+addValue: TextField
+func: InventoryFunctions
+infoBox()
+refresh()
+AddListItem()
+removeItem()
+editName()
+editSerial()
+editValue()
+clearList()
+sortValue()
+sortSerial()
+sortName()
+saveCurrent()
+loadOne()
+searchSerial()
+searchName()
+sortAll()
+
+
 }
+
+class InventoryFunctions{
+    prettyString()
+    addItem()
+    removeItem()
+    editValue()
+    editSerialNumber()
+    editItemName()
+    sortByValue()
+    sortBySerialNumber()
+    sortByName()
+    searchByName()
+    searchBySerialNumber()
+    clearList()
+
+
+}
+
+class PopUpController{
+closeBtnClick()
+
+}
+javafx.Application <|-- App
+App -- InventoryController
+App -- PopUpController
+InventoryController *--> InventoryFunctions
+InventoryController *--> PopUpController
+
 
 @enduml

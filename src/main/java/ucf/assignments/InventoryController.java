@@ -48,7 +48,7 @@ public class InventoryController {
     }
 
     public void AddListItem(ActionEvent actionEvent) {
-        String test =func.addItem(workList, addName.getText(),addSerial.getText(),addValue.getText());
+        String test = func.addItem(workList, addName.getText(),addSerial.getText(),addValue.getText());
         if(test.equals("Item successfully added"))
             observList.add(func.prettyString(workList.get(workList.size()-1)));
 
