@@ -16,6 +16,12 @@ public class PopUpController {
     @FXML
     String returnText;
     @FXML
+    TextField fileLocation;
+    @FXML
+    TextField fileName;
+    @FXML
+    TextField fileType;
+    @FXML
     private void closeBtnClick() throws IOException {
 
         //stores textfield input as a string
@@ -24,6 +30,12 @@ public class PopUpController {
         Stage stage = (Stage)addSearch.getScene().getWindow();
         stage.setTitle(returnText);
         stage.close();
+    }
+
+    private void closeSaveClick() {
+        Stage stage = (Stage)fileType.getScene().getWindow();
+        stage.close();
+
     }
 
 }

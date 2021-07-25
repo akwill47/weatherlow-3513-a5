@@ -131,7 +131,23 @@ public class InventoryController {
         inventoryList.setItems(nameList);
     }
 
-    public void saveCurrent(ActionEvent actionEvent) {
+    public void saveCurrent(ActionEvent actionEvent) throws IOException {
+        Stage popUpSave = new Stage();
+        popUpSave.initModality(Modality.APPLICATION_MODAL);
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("PopUpSave.fxml"));
+        Parent root = loader.load();
+
+        PopUpController controller = loader.getController();
+
+        Scene scene = new Scene(root);
+        popUpSave.setScene(scene);
+        popUpSave.showAndWait();
+        String fileLocation = controller.fileLocation.getText();
+        String fileName = controller.fileName.getText();
+        String fileType = controller.fileType.getText().toLowerCase();
+
+        func.saveInventory(workList,fileName,fileLocation,fileType);
     }
 
     public void loadOne(ActionEvent actionEvent) {
@@ -140,8 +156,8 @@ public class InventoryController {
 
     public void searchSerial(ActionEvent actionEvent) throws IOException {
 
-        Stage popupSave = new Stage();
-        popupSave.initModality(Modality.APPLICATION_MODAL);
+        Stage popUpSearch = new Stage();
+        popUpSearch.initModality(Modality.APPLICATION_MODAL);
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("PopUp.fxml"));
         Parent root = loader.load();
@@ -149,11 +165,11 @@ public class InventoryController {
         PopUpController controller = loader.getController();
 
         Scene scene = new Scene(root);
-        popupSave.setScene(scene);
-        popupSave.showAndWait();
+        popUpSearch.setScene(scene);
+        popUpSearch.showAndWait();
 
         ArrayList<HashMap<String,String>> searchList = new ArrayList<>();
-        String searchKey = popupSave.getTitle();
+        String searchKey = popUpSearch.getTitle();
         func.searchBySerialNumber(searchList,workList,searchKey);
         ObservableList<String> searchObservableList = FXCollections.observableArrayList();
         for(int i=0;i<searchList.size();i++){
@@ -163,8 +179,8 @@ public class InventoryController {
     }
 
     public void searchName(ActionEvent actionEvent) throws IOException{
-        Stage popupSave = new Stage();
-        popupSave.initModality(Modality.APPLICATION_MODAL);
+        Stage popUpSearch = new Stage();
+        popUpSearch.initModality(Modality.APPLICATION_MODAL);
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("PopUp.fxml"));
         Parent root = loader.load();
@@ -172,11 +188,11 @@ public class InventoryController {
         PopUpController controller = loader.getController();
 
         Scene scene = new Scene(root);
-        popupSave.setScene(scene);
-        popupSave.showAndWait();
+        popUpSearch.setScene(scene);
+        popUpSearch.showAndWait();
 
         ArrayList<HashMap<String,String>> searchList = new ArrayList<>();
-        String searchKey = popupSave.getTitle();
+        String searchKey = popUpSearch.getTitle();
         func.searchByName(searchList,workList,searchKey);
         ObservableList<String> searchObservableList = FXCollections.observableArrayList();
         for(int i=0;i<searchList.size();i++){

@@ -160,12 +160,12 @@ public class InventoryFunctions {
         }
         return "Item searched by serial number";
     }
-    public String saveInventory(ArrayList<HashMap<String,String>> list,String fileName,String fileLocation){
+    public String saveInventory(ArrayList<HashMap<String,String>> list,String fileName,String fileLocation,String fileType){
         //user provides file name and file location to save
 
-        if(fileName.equals("tsv")){
+        if(fileType.equals("tsv")){
             try {
-                FileWriter file = new FileWriter(fileLocation+".txt");
+                FileWriter file = new FileWriter(fileLocation+fileName+".txt");
                 PrintWriter write = new PrintWriter(file);
 
                 for (int i = 0; i < list.size(); i++) {
@@ -178,9 +178,9 @@ public class InventoryFunctions {
             }
         }
 
-        if(fileName.equals("html")){
+        if(fileType.equals("html")){
             try {
-                BufferedWriter bw = new BufferedWriter(new FileWriter(fileLocation + ".html"));
+                BufferedWriter bw = new BufferedWriter(new FileWriter(fileLocation + fileName+".html"));
                 bw.write("<html><head>");
                 bw.write("<title>Inventory Management</title>");
                 bw.write("</head><body>");
@@ -200,11 +200,11 @@ public class InventoryFunctions {
 
 
             }
-        if(fileName.equals("json")){
+        if(fileType.equals("json")){
             try {
                 Gson gson = new Gson();
                 String json = gson.toJson(list);
-                BufferedWriter bw = new BufferedWriter(new FileWriter(fileLocation + ".JSON"));
+                BufferedWriter bw = new BufferedWriter(new FileWriter(fileLocation + fileName+".JSON"));
                 bw.write(json);
                 bw.close();
             }catch(IOException e){
