@@ -163,7 +163,7 @@ public class InventoryFunctions {
     public String saveInventory(ArrayList<HashMap<String,String>> list,String fileName,String fileLocation,String fileType){
         //user provides file name and file location to save
 
-        if(fileType.equals("tsv")){
+        if(fileName.equals("tsv")){
             try {
                 FileWriter file = new FileWriter(fileLocation+fileName+".txt");
                 PrintWriter write = new PrintWriter(file);

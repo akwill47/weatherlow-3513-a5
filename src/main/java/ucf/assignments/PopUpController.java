@@ -12,6 +12,8 @@ public class PopUpController {
     @FXML
     public Button close_btn;
     @FXML
+    public Button close_btn_save;
+    @FXML
     public TextField addSearch;
     @FXML
     String returnText;
