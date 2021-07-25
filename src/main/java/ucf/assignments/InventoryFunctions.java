@@ -1,5 +1,11 @@
 package ucf.assignments;
 
+import com.google.gson.Gson;
+
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -156,6 +162,56 @@ public class InventoryFunctions {
     }
     public String saveInventory(ArrayList<HashMap<String,String>> list,String fileName,String fileLocation){
         //user provides file name and file location to save
+
+        if(fileName.equals("tsv")){
+            try {
+                FileWriter file = new FileWriter(fileLocation+".txt");
+                PrintWriter write = new PrintWriter(file);
+
+                for (int i = 0; i < list.size(); i++) {
+                    write.println(list.get(i).get("value")+"\t"+list.get(i).get("serial")+"\t"+list.get(i).get("name"));
+                }
+                write.close();
+            }
+            catch(IOException e){
+                System.out.println("Error reading/writing to file");
+            }
+        }
+
+        if(fileName.equals("html")){
+            try {
+                BufferedWriter bw = new BufferedWriter(new FileWriter(fileLocation + ".html"));
+                bw.write("<html><head>");
+                bw.write("<title>Inventory Management</title>");
+                bw.write("</head><body>");
+                bw.write("<table border=\"0\"><tr>");
+
+                for (int i = 0; i < list.size(); i++) {
+                    bw.write("<tr><td>"+list.get(i).get("value")+"</td></tr>");
+                    bw.write("<tr><td>"+list.get(i).get("serial")+"</td></tr>");
+                    bw.write("<tr><td>"+list.get(i).get("name")+"</td></tr>");
+                    }
+                bw.write("</table>");
+                bw.write("</body></html>");
+                bw.close();
+                }catch(IOException e){
+                    System.out.println("Error reading/writing to file");
+                    }
+
+
+            }
+        if(fileName.equals("json")){
+            try {
+                Gson gson = new Gson();
+                String json = gson.toJson(list);
+                BufferedWriter bw = new BufferedWriter(new FileWriter(fileLocation + ".JSON"));
+                bw.write(json);
+                bw.close();
+            }catch(IOException e){
+                System.out.println("Error reading/writing to file");
+            }
+        }
+
         //can save in TSV/HTML/JSON
         return "Inventory Items saved to file";
     }
