@@ -193,4 +193,32 @@ class InventoryFunctionsTest {
         String expected = "List successfully cleared";
         assertEquals(expected, actual);
     }
+    @Test
+    void saveInventory(){
+        InventoryFunctions func = new InventoryFunctions();
+        ArrayList<HashMap<String, String>> list = new ArrayList<>();
+        HashMap<String, String> newItem = new HashMap<>();
+        String fileName ="foodList";
+        String fileLocation = "/src/";
+        String fileType ="tsv";
+        newItem.put("name", "hamburger");
+        newItem.put("serial", "abc123459b");
+        newItem.put("value", "12");
+
+        String actual = func.saveInventory(list,fileName,fileLocation,fileType);
+        String expected = "Inventory Items saved to file";
+        assertEquals(expected, actual);
+    }
+    @Test
+    void loadInventory(){
+        InventoryFunctions func = new InventoryFunctions();
+        ArrayList<HashMap<String, String>> list = new ArrayList<>();
+        String fileName ="foodList.txt";
+        String fileLocation = "/src/";
+
+        String actual = func.loadInventory(list,fileName,fileLocation);
+        String expected = "Inventory Items loaded from file";
+        assertEquals(expected, actual);
+
+    }
 }

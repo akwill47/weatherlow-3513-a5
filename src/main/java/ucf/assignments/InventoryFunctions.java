@@ -19,6 +19,7 @@ import java.util.regex.Pattern;
 
 public class InventoryFunctions {
     public String prettyString(HashMap<String,String> item){
+        //return the hashmap as a better formatted string
         return ""+item.get("value")+"\t\t\t" + item.get("serial") + "\t\t" + item.get("name");
     }
     public String addItem(ArrayList<HashMap<String,String>> list,String name,String serial,String value){
