@@ -54,11 +54,11 @@ public class InventoryFunctions {
                 return "Duplicate serial number found";
             }
         }
-        //builds the hash map
+        //begins building the hash map
         newItem.put("serial",serial);
 
         newItem.put("name",name);
-
+        //formats the item value
         DecimalFormat df = new DecimalFormat("#.00");
         num=Double.parseDouble(value);
         tempValue = df.format(num);

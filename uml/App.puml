@@ -54,6 +54,7 @@ class InventoryFunctions{
 
 class PopUpController{
 closeBtnClick()
+closeSaveClick()
 
 }
 javafx.Application <|-- App
